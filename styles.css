@@ -1,8 +1,8 @@
 #dash-banner {
-    background-color: darkgray;
+    background-color: darkslategrey;
     font-size: 40px;
     font-weight: bolder;
     color: honeydew;
-    padding-top: 25px;
-    padding-bottom: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
