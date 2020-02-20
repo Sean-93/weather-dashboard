@@ -13,13 +13,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-      crossorigin="anonymous"
-    ></script>
-    <script src="app.js"></script>
-
+    
     <div id="dash-banner" class="row border">
       <div class="col text-center">Weather Dashboard</div>
     </div>
@@ -29,42 +23,28 @@
         <div class="col-4 border">
           <h4>Search for a City:</h4>
           <div class="col mb-3">
-            <input type="text" /><button class="btn-primary">Go!</button>
-        </div>
-        <div class="col-8">
+            <input class="form-control" id= "search-value" type="text" /><button id= "search-button" class="btn-primary">Go!</button>
+          </div>
+          <div class="col-8">
             <div class="row">
-                <div class="col">
+              <div class="col">
                     <p class="border text-center pt-2 pb-2">Placeholder</p>
-                    <p class="border text-center pt-2 pb-2">Placeholder</p>
-                    <p class="border text-center pt-2 pb-2">Placeholder</p>
-                    <p class="border text-center pt-2 pb-2">Placeholder</p>
-                    <p class="border text-center pt-2 pb-2">Placeholder</p>
-                    <p class="border text-center pt-2 pb-2">Placeholder</p>
-                    <p class="border text-center pt-2 pb-2">Placeholder</p>
-                </div>
+                    
+                  </div>
             </div>
-        </div>
+          </div>
         </div>
 
         <div class="col border">
           <div class="row">
             <div class="col">
-              <div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repellat tempora mollitia saepe dignissimos, nemo consectetur
-                labore adipisci, odit sapiente illo itaque dicta tenetur
-                voluptates laudantium quam ullam alias nam accusantium. Lorem
-                ipsum dolor sit amet, consectetur adipisicing elit. Ratione
-                delectus culpa quibusdam aliquam nam et obcaecati nisi sunt, id
-                facere totam doloribus magnam ea, ipsa ab, animi debitis natus
-                temporibus? Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Suscipit provident ex minima assumenda libero illo sequi
-                corrupti maiores officia doloremque doloribus accusamus
-                consequuntur fuga alias aliquam minus, nemo labore blanditiis.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit,
-                ut. Deserunt, asperiores expedita alias molestiae nulla, ipsa,
-                aut possimus minus repudiandae ipsum natus voluptatem. Sed
-                facere ipsam quidem! Deserunt, veritatis?
+              <div class="card">
+                <div class="card-body">
+                  <h3 class="card-title city-title"></h3>
+                  <p class="card-text temp"></p>
+                  <p class="card-text humid"></p>
+                  <p class="card-text wind"></p>
+                </div>
               </div>
             </div>
           </div>
@@ -91,5 +71,11 @@
         </div>
       </div>
     </div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="app.js"></script>
   </body>
-</html>
+  </html>
