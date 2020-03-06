@@ -1,12 +1,30 @@
-// Weather Homework URLS:
-// Forecast: "https://api.openweathermap.org/data/2.5/forecast?q=" + searchValue + "&appid=&units=imperial"
 // Icon: "https://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png"
 
+
+
 $(document).ready(function() {
+  var recentSearches = localStorage.getItem("recentSearches");
   var APIKey = "01fa28afe21461cd783d2b90eac59006";
+  
+  if(recentSearches){
+    recentSearches = JSON.parse(recentSearches);
+    searchweather(recentSearches[recentSearches.length - 1]);
+  }else {
+    recentSearches = [];
+  }
+  
+  // generate buttons for each city
 
   $("#search-button").on("click", function() {
-    var searchValue = $("#search-value").val();
+    var searchValue = $("#search-value").val().trim();
+
+    if(searchValue === "") return;
+
+    if(!recentSearches.includes(searchValue)){
+      recentSearches.push(searchValue);
+      localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
+    }
+
     console.log(searchValue);
     $("#search-value").val("");
     searchweather(searchValue);
@@ -78,34 +96,25 @@ $(document).ready(function() {
 
         for (let i = 0; i < response.list.length; i++) {
           if(response.list[i].dt_txt.indexOf("15:00:00")!==-1) {
-            var col = $(" <div> ").addClass("col-md-2")
-            var card = $(" <div> ").addClass("card bg-primary text-white")
-            var body = $(" <div> ").addClass("card-body p-2")
-            var title = $(" <h5> ").addClass("card-title").text(new Date(response.list[i].dt_txt).toLocaleDateString())
-            var temp = $(" <p> ").addClass("card-text").text(response.list[i].main.temp)
-            var humidity = $(" <p> ").addClass("card-text").text(response.list[i].main.humidity)
+            var col = $("<div>").addClass("col-3")
+            var card = $("<div>").addClass("card bg-primary text-white")
+            var body = $("<div>").addClass("card-body p-2")
+            var title = $("<h5>")
+            .addClass("card-title")
+            .text(new Date(response.list[i].dt_txt).toLocaleDateString())
+            var temp = $("<p>")
+            .addClass("card-text")
+            .html(response.list[i].main.temp + "<span>&#8457;</span>")
+
+            var humidity = $("<p>")
+            .addClass("card-text")
+            .text("Humidity: " + response.list[i].main.humidity)
 
             col.append(card.append(body.append(title, temp, humidity)))
             $("#forecast .row").append(col)
           }
-
-          
         }
         
-        // Transfer content to HTML
-        // $(".city-title").text(response.name + " Weather Details");
-        // $(".wind").text("Wind Speed: " + response.wind.speed);
-        // $(".humid").text("Humidity: " + response.main.humidity);
-        // $(".temp").text("Temperature (F) " + response.main.temp);
-
-        // // Converts the temp to Kelvin with the below formula
-        // var tempF = (response.main.temp - 273.15) * 1.8 + 32;
-        // $(".tempF").text("Temperature (Kelvin) " + tempF);
-
-        // // Log the data in the console as well
-        // console.log("Wind Speed: " + response.wind.speed);
-        // console.log("Humidity: " + response.main.humidity);
-        // console.log("Temperature (F): " + response.main.temp);
       });
       
   }
